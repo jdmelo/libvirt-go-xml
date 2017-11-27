@@ -218,9 +218,14 @@ type DomainInterfaceScript struct {
 	Path string `xml:"path,attr"`
 }
 
+type DomainInterfaceDriverHost struct {
+	MrgRxbuf string `xml:"mrg_rxbuf,attr"`
+}
+
 type DomainInterfaceDriver struct {
-	Name   string `xml:"name,attr"`
-	Queues uint   `xml:"queues,attr,omitempty"`
+	Name   string                     `xml:"name,attr"`
+	Queues uint                       `xml:"queues,attr,omitempty"`
+	Host   *DomainInterfaceDriverHost `xml:"host"`
 }
 
 type DomainInterfaceVirtualport struct {
@@ -753,6 +758,7 @@ type DomainCell struct {
 	CPUs   string `xml:"cpus,attr"`
 	Memory string `xml:"memory,attr"`
 	Unit   string `xml:"unit,attr"`
+	MemAccess string `xml:"memAccess"`
 }
 
 type DomainClock struct {
@@ -848,10 +854,47 @@ type DomainCPUTuneQuota struct {
 	Value int64 `xml:",chardata"`
 }
 
+type DomainCPUTuneVCPUPin struct {
+	VCPU   uint   `xml:"vcpu,attr"`
+	CPUSet string `xml:"cpuset,attr"`
+}
+
+type DomainCPUTuneEmulatorPin struct {
+	CPUSet string `xml:"cpuset,attr"`
+}
+
+type DomainCPUTuneIOThreadPin struct {
+	IOThread uint   `xml:"iothread,attr"`
+	CPUSet   string `xml:"cpuset,attr"`
+}
+
+type DomainCPUTuneVCPUSched struct {
+	VCPUs     string `xml:"vcpus,attr"`
+	Scheduler string `xml:"scheduler,attr,omitempty"`
+	Priority  *int   `xml:"priority,attr"`
+}
+
+type DomainCPUTuneIOThreadSched struct {
+	IOThreads string `xml:"iothreads,attr"`
+	Scheduler string `xml:"scheduler,attr,omitempty"`
+	Priority  *int   `xml:"priority,attr"`
+}
+
 type DomainCPUTune struct {
-	Shares *DomainCPUTuneShares `xml:"shares"`
-	Period *DomainCPUTunePeriod `xml:"period"`
-	Quota  *DomainCPUTuneQuota  `xml:"quota"`
+	Shares         *DomainCPUTuneShares         `xml:"shares"`
+	Period         *DomainCPUTunePeriod         `xml:"period"`
+	Quota          *DomainCPUTuneQuota          `xml:"quota"`
+	GlobalPeriod   *DomainCPUTunePeriod         `xml:"global_period"`
+	GlobalQuota    *DomainCPUTuneQuota          `xml:"global_quota"`
+	EmulatorPeriod *DomainCPUTunePeriod         `xml:"emulator_period"`
+	EmulatorQuota  *DomainCPUTuneQuota          `xml:"emulator_quota"`
+	IOThreadPeriod *DomainCPUTunePeriod         `xml:"iothread_period"`
+	IOThreadQuota  *DomainCPUTuneQuota          `xml:"iothread_quota"`
+	VCPUPin        []DomainCPUTuneVCPUPin       `xml:"vcpupin"`
+	EmulatorPin    *DomainCPUTuneEmulatorPin    `xml:"emulatorpin"`
+	IOThreadPin    []DomainCPUTuneIOThreadPin   `xml:"iothreadpin"`
+	VCPUSched      []DomainCPUTuneVCPUSched     `xml:"vcpusched"`
+	IOThreadSched  []DomainCPUTuneIOThreadSched `xml:"iothreadsched"`
 }
 
 type DomainQEMUCommandlineArg struct {
