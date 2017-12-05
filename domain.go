@@ -223,7 +223,7 @@ type DomainInterfaceDriverHost struct {
 }
 
 type DomainInterfaceDriver struct {
-	Name   string                     `xml:"name,attr"`
+	Name   string                     `xml:"name,attr,omitempty"`
 	Queues uint                       `xml:"queues,attr,omitempty"`
 	Host   *DomainInterfaceDriverHost `xml:"host"`
 }
@@ -758,7 +758,7 @@ type DomainCell struct {
 	CPUs   string `xml:"cpus,attr"`
 	Memory string `xml:"memory,attr"`
 	Unit   string `xml:"unit,attr"`
-	MemAccess string `xml:"memAccess"`
+	MemAccess string `xml:"memAccess,attr"`
 }
 
 type DomainClock struct {
