@@ -223,9 +223,10 @@ type DomainInterfaceDriverHost struct {
 }
 
 type DomainInterfaceDriver struct {
-	Name   string                     `xml:"name,attr,omitempty"`
-	Queues uint                       `xml:"queues,attr,omitempty"`
-	Host   *DomainInterfaceDriverHost `xml:"host"`
+	Name        string                     `xml:"name,attr,omitempty"`
+	Queues      uint                       `xml:"queues,attr,omitempty"`
+	RxQueueSize string                     `xml:"rx_queue_size,attr"`
+	Host        *DomainInterfaceDriverHost `xml:"host"`
 }
 
 type DomainInterfaceVirtualport struct {
@@ -754,10 +755,10 @@ type DomainNuma struct {
 }
 
 type DomainCell struct {
-	ID     string `xml:"id,attr"`
-	CPUs   string `xml:"cpus,attr"`
-	Memory string `xml:"memory,attr"`
-	Unit   string `xml:"unit,attr"`
+	ID        string `xml:"id,attr"`
+	CPUs      string `xml:"cpus,attr"`
+	Memory    string `xml:"memory,attr"`
+	Unit      string `xml:"unit,attr"`
 	MemAccess string `xml:"memAccess,attr"`
 }
 
