@@ -225,7 +225,7 @@ type DomainInterfaceDriverHost struct {
 type DomainInterfaceDriver struct {
 	Name        string                     `xml:"name,attr,omitempty"`
 	Queues      uint                       `xml:"queues,attr,omitempty"`
-	RxQueueSize string                     `xml:"rx_queue_size,attr"`
+	RxQueueSize string                     `xml:"rx_queue_size,attr,omitempty"`
 	Host        *DomainInterfaceDriverHost `xml:"host"`
 }
 
