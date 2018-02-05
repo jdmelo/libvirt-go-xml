@@ -70,12 +70,13 @@ type DomainDiskSource struct {
 }
 
 type DomainDiskDriver struct {
-	Name        string `xml:"name,attr,omitempty"`
-	Type        string `xml:"type,attr,omitempty"`
-	Cache       string `xml:"cache,attr,omitempty"`
-	IO          string `xml:"io,attr,omitempty"`
-	ErrorPolicy string `xml:"error_policy,attr,omitempty"`
-	Discard     string `xml:"discard,attr,omitempty"`
+	Name         string `xml:"name,attr,omitempty"`
+	Type         string `xml:"type,attr,omitempty"`
+	Cache        string `xml:"cache,attr,omitempty"`
+	IO           string `xml:"io,attr,omitempty"`
+	ErrorPolicy  string `xml:"error_policy,attr,omitempty"`
+	RErrorPolicy string `xml:"rerror_policy,attr,omitempty"`
+	Discard      string `xml:"discard,attr,omitempty"`
 }
 
 type DomainDiskTarget struct {
